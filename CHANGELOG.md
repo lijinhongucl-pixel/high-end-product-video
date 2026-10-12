@@ -2,6 +2,19 @@
 
 本项目遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
 
+## [2.2.0] - 2026-10-13
+
+### 变更（通用化）
+
+- 适用面从「科技产品宣传」扩展到**一切旁白驱动的短视频**：产品宣传（任意品类）、知识讲解、教程演示、品牌故事、活动回顾、个人 IP 口播。新增「开工前先对齐四件事」与「镜头类型与题材搭配」两节，按题材给旁白结构与镜头搭配建议
+- `examples/` 样例从星图 AstraFlow 换成精品咖啡品牌宣传片（`SLOW COFFEE`），证明流程不限题材
+- frontmatter 的 `displayName`/`summary`/`description` 重写，触发词扩充（做宣传片/产品视频/讲解视频/教程视频/短视频制作/product video/promotional video），pyproject 的 description 与 keywords 同步
+- TTS 接入方式通用化：除 offline/edge/existing 三模式外，明确 `--tts-cmd` 可接任意第三方 TTS（MiniMax/Azure/OpenAI），密钥只存在于用户自己的环境变量
+
+### 修复
+
+- 安装目录（`~/.workbuddy/skills/high-end-product-video`）里的旧版 SKILL.md 仍带着硬编码 MiniMax Key 与无界动量公式，本版整体替换清除
+
 ## [2.1.0] - 2026-10-13
 
 从企业微信流传的 SKILL 草稿重构为可运行的 GitHub 项目。方法论保留，工程全部重写。

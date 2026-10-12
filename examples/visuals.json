@@ -1,7 +1,7 @@
 [
-  {"type": "title",   "eyebrow": "AstraFlow", "caption": "两百多个模型，一个入口"},
-  {"type": "feature", "eyebrow": "核心能力", "caption": "换模型只是改一个字符串的事，沙箱里直接跑。", "tags": ["即开即用", "200+ 模型", "按需计费"]},
-  {"type": "metric",  "metric": "200", "unit": "+", "caption": "聚合模型，一次接入全部可用"},
-  {"type": "feature", "eyebrow": "开箱即测", "caption": "可视化编排，调试、部署、观测一条龙。", "tags": ["Agent Sandbox", "可视化编排"]},
-  {"type": "outro",   "wordmark": "AstraFlow", "tagline": "星图 AI 开发平台"}
+  {"type": "title",   "eyebrow": "SLOW COFFEE", "caption": "一支关于认真做咖啡的片子"},
+  {"type": "feature", "eyebrow": "产地直采", "caption": "每年两次深入产区，只收当季成熟鲜果处理的微批次。", "tags": ["当季鲜果", "微批次", "手工筛选"]},
+  {"type": "metric",  "metric": "72", "unit": "小时", "caption": "烘好到杯中，新鲜风味只等七十二小时"},
+  {"type": "feature", "eyebrow": "冲煮方案", "caption": "手冲、冷萃、意式，三套参数直接抄，新手也不会翻车。", "tags": ["手冲", "冷萃", "意式"]},
+  {"type": "outro",   "wordmark": "SLOW COFFEE", "tagline": "现在，去煮一杯好咖啡"}
 ]
