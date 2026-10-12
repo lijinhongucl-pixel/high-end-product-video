@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.9", "3.11", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 安装测试依赖
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+
+      - name: 语法检查
+        run: python -m compileall -q scripts tests
+
+      - name: 单元回归（含 ITU 系数对照）
+        run: python -m pytest tests/ -q
+
+      - name: 离线模式全链路（时间轴 → 混音 → 门禁）
+        run: |
+          cd "$RUNNER_TEMP" && mkdir -p e2e && cd e2e
+          printf '第一句旁白测试\n第二句旁白测试\n' > n.txt
+          python "$GITHUB_WORKSPACE/scripts/tts_timeline.py" n.txt --mode offline --audio-dir voice --out timeline.json
+          test -f timeline.json
+          # 占位人声母带：响度必须收敛到 -16 LUFS / -1.0 dBTP
+          python "$GITHUB_WORKSPACE/scripts/audio_engine.py" --timeline timeline.json --no-bgm --audio-dir voice --out master.wav
+          test -f master.wav
+          # 门禁必须全绿（硬性 7 项）
+          python "$GITHUB_WORKSPACE/scripts/verify_quality.py" --timeline timeline.json --audio master.wav --lufs -16
+          echo "离线全链路通过"
+
+      - name: 门禁反例必须被拦截
+        run: |
+          cd "$RUNNER_TEMP"/e2e
+          # 超峰值音频必须被 TRUE_PEAK_CEILING 拦截
+          python - <<'PY'
+          import sys, math
+          sys.path.insert(0, "$GITHUB_WORKSPACE/scripts")
+          import media_lib as ml
+          ml.write_wav_mono("loud.wav", 48000,
+              [0.99*math.sin(2*math.pi*440*i/48000) for i in range(48000*3)])
+          PY
+          if python "$GITHUB_WORKSPACE/scripts/verify_quality.py" --timeline timeline.json --audio loud.wav >/dev/null 2>&1; then
+            echo "门禁失效：超峰值音频竟然通过了" && exit 1
+          fi
+          echo "反例拦截通过"

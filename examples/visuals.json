@@ -1,0 +1,7 @@
+[
+  {"type": "title",   "eyebrow": "AstraFlow", "caption": "两百多个模型，一个入口"},
+  {"type": "feature", "eyebrow": "核心能力", "caption": "换模型只是改一个字符串的事，沙箱里直接跑。", "tags": ["即开即用", "200+ 模型", "按需计费"]},
+  {"type": "metric",  "metric": "200", "unit": "+", "caption": "聚合模型，一次接入全部可用"},
+  {"type": "feature", "eyebrow": "开箱即测", "caption": "可视化编排，调试、部署、观测一条龙。", "tags": ["Agent Sandbox", "可视化编排"]},
+  {"type": "outro",   "wordmark": "AstraFlow", "tagline": "星图 AI 开发平台"}
+]

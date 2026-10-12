@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "high-end-product-video"
+version = "2.1.0"
+description = "科技产品宣传短视频工作流：声音时钟逆推 + 确定性帧渲染 + 侧链闪避混音 + BS.1770-4 响度母带 + 可执行质量门禁"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "社交名流UCL" }]
+keywords = ["video", "tts", "loudness", "lufs", "bs1770", "playwright",
+            "ffmpeg", "product-video", "skill", "agent"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+
+# 可选依赖：edge 模式的高质量 TTS；渲染需要 Playwright
+[project.optional-dependencies]
+edge = ["edge-tts>=6.1"]
+render = ["playwright>=1.40"]
+dev = ["pytest>=7.0", "edge-tts>=6.1", "playwright>=1.40"]
+
+[project.urls]
+Homepage = "https://github.com/lijinhongucl-pixel/high-end-product-video"
+Repository = "https://github.com/lijinhongucl-pixel/high-end-product-video"
+Changelog = "https://github.com/lijinhongucl-pixel/high-end-product-video/blob/main/CHANGELOG.md"
+Issues = "https://github.com/lijinhongucl-pixel/high-end-product-video/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py38"

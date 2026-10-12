@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# 测试与产物
+.pytest_cache/
+frames/
+voice/
+master.wav
+final.mp4
+timeline.json
+timeline.md
+*.log
+
+# 系统
+.DS_Store
