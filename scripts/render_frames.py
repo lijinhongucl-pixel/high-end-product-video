@@ -297,7 +297,7 @@ def main():
         for i, t in enumerate(dry):
             t["frame"] = i
         tasks, total = dry, len(dry)
-        print("  dry-run：每个镜头 1 帧（取 45% 处），共 %d 帧" % total)
+        print("  dry-run：每个镜头 1 帧（取 45%% 处），共 %d 帧" % total)
 
     os.makedirs(args.out, exist_ok=True)
     print("  渲染 %d 帧（%dx%d @ %dfps，%s，%d workers，主题 %s）"
