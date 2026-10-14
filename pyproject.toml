@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "high-end-product-video"
-version = "2.1.0"
+version = "2.2.0"
 description = "高品质短视频工业级工作流：声音时钟逆推 + 确定性帧渲染 + 侧链闪避混音 + BS.1770-4 响度母带 + 可执行质量门禁，不限题材"
 readme = "README.md"
 requires-python = ">=3.8"
